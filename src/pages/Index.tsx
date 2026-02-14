@@ -1,12 +1,20 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import HeroSection from "@/components/HeroSection";
+import PipelineSection from "@/components/PipelineSection";
+import UploadSection from "@/components/UploadSection";
+import GuideDisplay from "@/components/GuideDisplay";
+import Footer from "@/components/Footer";
 
 const Index = () => {
+  const [guideVisible, setGuideVisible] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <HeroSection />
+      <PipelineSection />
+      <UploadSection onGuideGenerated={() => setGuideVisible(true)} />
+      <GuideDisplay visible={guideVisible} />
+      <Footer />
     </div>
   );
 };
