@@ -1,73 +1,154 @@
-# Welcome to your Lovable project
+📘 Manual Simplifier
+A simple web tool that converts confusing product manuals into clear, beginner-friendly setup guides using AI.
+Built as a portfolio project to demonstrate real-world AI integration, PDF processing, and backend engineering.
 
-## Project info
+Live demo: 🌐 https://manualsimplifier.lovable.app/
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🚀 What Is It?
+Manuels are often complicated, full of technical jargon, and hard to follow — especially when you just want to set something up.
+Manual Simplifier solves this by automatically generating clean, step-by-step instructions from a PDF manual, making setup easy for anyone.
 
-## How can I edit this code?
+This project shows how to:
+✔ extract text from manuals
+✔ process and clean the content
+✔ use large language models (LLMs) to generate structured guides
+✔ build a full backend + frontend stack
 
-There are several ways of editing your application.
+🔍 Why This Project Matters
+⚡ Helps people quickly understand how to set up devices
+⚡ Shows real engineering of an AI pipeline
+⚡ Great talking point in interviews — demonstrates backend + AI + tooling integration
 
-**Use Lovable**
+🧠 How It Works
+User uploads a PDF manual through the web interface
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+The backend extracts and cleans the text
 
-Changes made via Lovable will be committed automatically to this repo.
+Text is divided into logical chunks
 
-**Use your preferred IDE**
+Each chunk is fed to an AI (LLM) via prompt
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+AI outputs structured steps
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The backend builds a unified JSON guide
 
-Follow these steps:
+Frontend displays the setup guide cleanly
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+📦 Features
+✨ Upload PDF manuals
+✨ Clean extracted text from PDFs
+✨ Generate beginner-friendly setup instructions
+✨ Error warnings and common pitfalls highlighted
+✨ Exportable guide output
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+🧑‍💻 Tech Stack
+Layer	Tech
+Frontend	HTML, CSS, JavaScript
+Backend	Python, FastAPI
+PDF Processing	pdfplumber or PyMuPDF
+AI Model	OpenAI / LLM API
+Hosting	Lovable.ai / Render / Netlify
 
-# Step 3: Install the necessary dependencies.
-npm i
+🗂️ Folder Structure
+graphql
+Copy code
+backend/
+├── main.py             # FastAPI app entry
+├── api/
+│   └── routes.py       # Upload and generate endpoint
+├── services/
+│   ├── pdf_reader.py   # Extract text from PDFs
+│   ├── cleaner.py      # Clean extracted text
+│   ├── chunker.py      # Chunk cleaned text
+│   ├── llm.py          # AI calls and prompt handling
+│   └── guide_builder.py # Build unified setup guide
+├── prompts/
+│   └── setup_prompt.txt # Prompt used for LLM
+├── utils/
+│   └── file_utils.py
+├── requirements.txt
+└── README.md
+📋 API Endpoints
+POST /generate
+Uploads a PDF, processes it, and returns a structured guide:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Request
 
-**Edit a file directly in GitHub**
+Content-Type: multipart/form-data
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Field: file (PDF)
 
-**Use GitHub Codespaces**
+Response
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+json
+Copy code
+{
+  "title": "Product Setup Guide",
+  "estimated_time": "15–20 minutes",
+  "steps": [
+    {"step": 1, "instruction": "..."},
+    {"step": 2, "instruction": "..."}
+  ],
+  "warnings": [],
+  "common_mistakes": [],
+  "final_checklist": []
+}
+🧠 Example Output
+markdown
+Copy code
+Title: Easy Router Setup Guide
+Estimated time: 10 mins
 
-## What technologies are used for this project?
+1. Unbox the router...
+2. Connect the power cable...
+3. Open your web browser...
+4. Enter default credentials...
+(Replace above with your own example from live testing.)
 
-This project is built with:
+⚙️ Setup & Installation
+Clone the repo
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+bash
+Copy code
+git clone https://github.com/YOUR_USERNAME/manual-simplifier
+Create a virtual environment
 
-## How can I deploy this project?
+bash
+Copy code
+python -m venv venv
+source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate       # Windows
+Install dependencies
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+bash
+Copy code
+pip install -r requirements.txt
+Run the FastAPI backend
 
-## Can I connect a custom domain to my Lovable project?
+bash
+Copy code
+uvicorn backend.main:app --reload
+Visit the frontend or test with API clients (Postman, curl)
 
-Yes, you can!
+🛠️ How It’s Built (Engineered)
+This project is not just calling AI — it includes:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+📌 PDF text extraction and cleaning
+📌 Logical chunking to respect LLM limits
+📌 Reusable LLM prompting design
+📌 Structured output generation
+📌 FastAPI backend with clear API contract
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+🏁 What to Improve Later
+✨ Add OCR support (for scanned PDFs)
+✨ Show in-browser guide export (PDF / Notion)
+✨ Support multiple languages
+✨ Add user authentication and saved history
+✨ Turn into a SaaS product
+
+📣 Credits
+Built by Kartik Garg — BTech (2nd Year)
+A fun portfolio project demonstrating real AI + backend skills.
+
+📄 License
+MIT License © 2026
