@@ -1,3 +1,5 @@
+Website Link : https://setup-simplified.vercel.app/
+
 # Manual Simplifier
 
 > Transform complex product manuals into clear, beginner-friendly setup guides using AI.
