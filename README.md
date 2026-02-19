@@ -47,29 +47,7 @@ Frontend	HTML, CSS, JavaScript
 Backend	Python, FastAPI
 PDF Processing	pdfplumber or PyMuPDF
 AI Model	OpenAI / LLM API
-Hosting	Lovable.ai / Render / Netlify
 
-🗂️ Folder Structure
-graphql
-Copy code
-backend/
-├── main.py             # FastAPI app entry
-├── api/
-│   └── routes.py       # Upload and generate endpoint
-├── services/
-│   ├── pdf_reader.py   # Extract text from PDFs
-│   ├── cleaner.py      # Clean extracted text
-│   ├── chunker.py      # Chunk cleaned text
-│   ├── llm.py          # AI calls and prompt handling
-│   └── guide_builder.py # Build unified setup guide
-├── prompts/
-│   └── setup_prompt.txt # Prompt used for LLM
-├── utils/
-│   └── file_utils.py
-├── requirements.txt
-└── README.md
-📋 API Endpoints
-POST /generate
 Uploads a PDF, processes it, and returns a structured guide:
 
 Request
